@@ -1,0 +1,53 @@
+// Importing variables and Bootstrap styles
+@import "variables";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+body {
+  background-color: $background-color;
+  font-size: $font-size-base
+}
+
+
+.auth-form {
+  background: $secondary-color;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  margin-top: 5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+  h2 {
+    color: $primary-color;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-control {
+    border: 1px solid lighten($primary-color, 20%);
+    margin-bottom: 1rem;
+    
+    &:focus {
+      box-shadow: none;
+      border-color: $primary-color;
+    }
+  }
+  
+  .btn-primary {
+    background: $primary-color;
+    border: none;
+    margin-bottom: 5rem;
+    
+    &:hover {
+      background: darken($primary-color, 10%);
+    }
+  }
+  
+  .sign-up-link {
+    color: darken($primary-color, 20%);
+    margin-top: 1rem;
+    display: inline-block;
+    
+    &:hover {
+      text-decoration: none;
+      color: darken($primary-color, 30%);
+    }
+  }
+}
