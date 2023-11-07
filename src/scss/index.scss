@@ -7,12 +7,16 @@ body {
   font-size: $font-size-base
 }
 
+.background {
+  background: rgb(223,223,223);
+  background: linear-gradient(90deg, rgba(223,223,223,1) 0%, rgba(239,218,241,1) 25%, rgba(81,211,237,1) 100%);
+}
+
 
 .auth-form {
   background: $secondary-color;
-  padding: 2rem;
+  padding: 4rem 2rem;
   border-radius: 0.5rem;
-  margin-top: 5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   
   h2 {
