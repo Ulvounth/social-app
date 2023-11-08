@@ -55,3 +55,56 @@ body {
     }
   }
 }
+
+.icon-link {
+  font-size: 3rem;
+}
+
+// Profile styles
+.profile {
+  .profile-image {
+    width: 200px; // Profile image size
+    margin: auto; // Center the profile image
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 50%; // Ensure the image is round
+    }
+  }
+
+  .username {
+    margin-top: 1rem;
+    font-size: 2rem; // Increase the font size for the username
+  }
+
+  button {
+    border: none;
+    background-color: $primary-color;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px; // Rounded corners for the button
+    margin-top: 1rem;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+
+  .followers-count,
+  .following-count {
+    font-size: 1.5rem; // Increase the font size for counts
+    font-weight: bold;
+  }
+
+  p {
+    margin: 0; // Remove margin from paragraphs to tighten up spacing
+  }
+
+  .gallery-image {
+    background-color: #ddd; // Placeholder color
+    width: 100%;
+    padding-bottom: 100%; // Creates a square based on width
+    border: 1px solid #ccc;
+  }
+}

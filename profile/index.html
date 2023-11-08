@@ -3,9 +3,102 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Profile Page</title>
+
+    <link
+      rel="stylesheet"
+      href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/dist/css/index.css" />
+    <script
+      src="https://kit.fontawesome.com/0ea37d4b08.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <h1>Hello World</h1>
+    <header class="navbar navbar-expand-lg my-4">
+      <nav class="container">
+        <!-- Icons and links -->
+        <a href="/feed/index.html" class="icon-link">
+          <i class="fa-solid fa-house"></i>
+        </a>
+        <a href="#" class="icon-link">
+          <i class="fa-solid fa-square-plus"></i>
+        </a>
+        <a href="#" class="icon-link">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </a>
+        <a href="#" class="icon-link">
+          <i class="fa-solid fa-user"></i>
+        </a>
+      </nav>
+    </header>
+
+    <div class="container text-center mt-5">
+      <div class="profile">
+        <!-- Profile Image -->
+        <div class="profile-image">
+          <img
+            src="/Images/player-quote.jpg"
+            alt="Profile Image"
+            class="img-fluid rounded-circle"
+          />
+        </div>
+
+        <!-- Username -->
+        <h2 class="username">Username</h2>
+
+        <!-- Edit Profile Button -->
+        <button class="btn btn-primary">Edit profile</button>
+
+        <!-- Followers and Following Count -->
+        <div class="d-flex justify-content-center mt-3">
+          <div class="mx-3">
+            <span class="followers-count">0</span>
+            <p>followers</p>
+          </div>
+          <div class="mx-3">
+            <span class="following-count">0</span>
+            <p>following</p>
+          </div>
+        </div>
+
+        <!-- Gallery -->
+        <div class="row mt-4">
+          <!-- Replace with dynamic content -->
+          <!-- Static placeholders for now -->
+          <div class="col-4 mb-2">
+            <div class="gallery-image placeholder"></div>
+          </div>
+          <div class="col-4 mb-2">
+            <div class="gallery-image placeholder"></div>
+          </div>
+          <div class="col-4 mb-2">
+            <div class="gallery-image placeholder"></div>
+          </div>
+          <div class="col-4 mb-2">
+            <div class="gallery-image placeholder"></div>
+          </div>
+          <div class="col-4 mb-2">
+            <div class="gallery-image placeholder"></div>
+          </div>
+          <div class="col-4 mb-2">
+            <div class="gallery-image placeholder"></div>
+          </div>
+          <div class="col-4 mb-2">
+            <div class="gallery-image placeholder"></div>
+          </div>
+          <div class="col-4 mb-2">
+            <div class="gallery-image placeholder"></div>
+          </div>
+          <div class="col-4 mb-2">
+            <div class="gallery-image placeholder"></div>
+          </div>
+          <!-- Repeat the above div for each image -->
+        </div>
+      </div>
+    </div>
+
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
