@@ -10,6 +10,8 @@
       href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="dist/css/index.css" />
+    <script src="JS/registerUser.js" defer></script>
+    <script src="JS/login.js" defer></script>
   </head>
   <body class="background">
     <div class="container">
@@ -22,7 +24,7 @@
                 <input
                   type="email"
                   class="form-control"
-                  id="inputEmail"
+                  id="loginEmail"
                   aria-describedby="emailHelp"
                   placeholder="@noroff.no / @stud.noroff.no"
                   required
@@ -32,7 +34,7 @@
                 <input
                   type="password"
                   class="form-control"
-                  id="inputPassword"
+                  id="loginPassword"
                   placeholder="Enter your password"
                   minlength="8"
                   required
@@ -41,12 +43,90 @@
               <button type="submit" class="btn btn-primary btn-block">
                 Log in
               </button>
-              <div class="text-center">
-                <a href="#" class="sign-up-link"
-                  >Don’t have an account? Sign up</a
+              <!-- Link to trigger modal -->
+              <p class="text-center">
+                Don't have an account?
+                <a
+                  href="#"
+                  data-bs-toggle="modal"
+                  data-bs-target="#registerModal"
+                  >Sign up</a
                 >
-              </div>
+              </p>
             </form>
+            <!-- Register Modal -->
+            <div
+              class="modal fade"
+              id="registerModal"
+              tabindex="-1"
+              aria-labelledby="registerModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Sign Up</h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- Registration Form -->
+                    <form id="registerForm">
+                      <div class="mb-3">
+                        <label for="registerUsername" class="form-label"
+                          >Username</label
+                        >
+                        <input
+                          type="name"
+                          class="form-control"
+                          id="registerUsername"
+                          required
+                        />
+                      <div class="mb-3">
+                        <label for="registerEmail" class="form-label"
+                          >Email address</label
+                        >
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="registerEmail"
+                          required
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="registerPassword" class="form-label"
+                          >Password</label
+                        >
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="registerPassword"
+                          required
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="registerConfirmPassword" class="form-label"
+                          >Confirm Password</label
+                        >
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="registerConfirmPassword"
+                          required
+                        />
+                      </div>
+                      <button type="submit" class="btn btn-primary">
+                        Register
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

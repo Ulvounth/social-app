@@ -28,9 +28,30 @@
         <a href="#" class="icon-link">
           <i class="fa-solid fa-magnifying-glass"></i>
         </a>
-        <a href="#" class="icon-link">
-          <i class="fa-solid fa-user"></i>
-        </a>
+        <div class="icon-link dropdown">
+          <a
+            href="#"
+            class="nav-link dropdown-toggle"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="fa-solid fa-user"></i>
+          </a>
+          <!-- Dropdown Menu -->
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item" href="/profile/index.html">Profile</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/settings/index.html">Settings</a>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <!-- Divider line -->
+            <li><a class="dropdown-item" href="/logout">Log out</a></li>
+          </ul>
+        </div>
       </nav>
     </header>
 
@@ -46,7 +67,7 @@
         </div>
 
         <!-- Username -->
-        <h2 class="username">Username</h2>
+        <h2 class="username" id="profile-username">Username</h2>
 
         <!-- Edit Profile Button -->
         <button class="btn btn-primary">Edit profile</button>
@@ -54,19 +75,18 @@
         <!-- Followers and Following Count -->
         <div class="d-flex justify-content-center mt-3">
           <div class="mx-3">
-            <span class="followers-count">0</span>
+            <span class="followers" id="followers-count">0</span>
             <p>followers</p>
           </div>
           <div class="mx-3">
-            <span class="following-count">0</span>
+            <span class="following" id="following-count">0</span>
             <p>following</p>
           </div>
         </div>
 
         <!-- Gallery -->
-        <div class="row mt-4">
-          <!-- Replace with dynamic content -->
-          <!-- Static placeholders for now -->
+        <div class="row mt-4" id="profile-posts">
+          <!--
           <div class="col-4 mb-2">
             <div class="gallery-image placeholder"></div>
           </div>
@@ -76,25 +96,7 @@
           <div class="col-4 mb-2">
             <div class="gallery-image placeholder"></div>
           </div>
-          <div class="col-4 mb-2">
-            <div class="gallery-image placeholder"></div>
-          </div>
-          <div class="col-4 mb-2">
-            <div class="gallery-image placeholder"></div>
-          </div>
-          <div class="col-4 mb-2">
-            <div class="gallery-image placeholder"></div>
-          </div>
-          <div class="col-4 mb-2">
-            <div class="gallery-image placeholder"></div>
-          </div>
-          <div class="col-4 mb-2">
-            <div class="gallery-image placeholder"></div>
-          </div>
-          <div class="col-4 mb-2">
-            <div class="gallery-image placeholder"></div>
-          </div>
-          <!-- Repeat the above div for each image -->
+          -->
         </div>
       </div>
     </div>

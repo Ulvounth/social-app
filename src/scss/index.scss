@@ -3,7 +3,6 @@
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 body {
-  background-color: $background-color;
   font-size: $font-size-base
 }
 
@@ -43,17 +42,6 @@ body {
       background: darken($primary-color, 10%);
     }
   }
-  
-  .sign-up-link {
-    color: darken($primary-color, 20%);
-    margin-top: 1rem;
-    display: inline-block;
-    
-    &:hover {
-      text-decoration: none;
-      color: darken($primary-color, 30%);
-    }
-  }
 }
 
 .icon-link {
@@ -91,8 +79,8 @@ body {
     }
   }
 
-  .followers-count,
-  .following-count {
+  .followers,
+  .following {
     font-size: 1.5rem; // Increase the font size for counts
     font-weight: bold;
   }
@@ -107,4 +95,34 @@ body {
     padding-bottom: 100%; // Creates a square based on width
     border: 1px solid #ccc;
   }
+}
+
+// Feed styles
+select {
+  width: 100%; /* Full width */
+  border: none; /* No border */
+  border-radius: 10px; /* Rounded borders */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+// Authentication modal styles
+.modal-content {
+  background-color: $background-color;
+  border-radius: 0.5rem; /* Match the border radius of your card */
+  border: none; /* Optional: Remove the border */
+  box-shadow: var(--shadow); /* Use the same shadow as your card */
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+  padding: 1rem; /* Consistent padding with your card */
+}
+
+.modal-title {
+  color: var(--primary-color); /* Use your primary color */
+}
+
+.btn-close {
+  filter: invert(1); /* Invert the color for visibility if necessary */
 }
