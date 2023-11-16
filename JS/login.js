@@ -1,3 +1,4 @@
+// LOGIN
 async function loginUser(url, data) {
   try {
     const postData = {
@@ -12,8 +13,19 @@ async function loginUser(url, data) {
     if (!response.ok) {
       // If the HTTP status code is not 2xx, throw an error to catch it later
       const errorInfo = await response.json();
-      throw new Error(`Error ${response.status}: ${errorInfo.message}`);
+
+      // Check if the error is specifically due to an incorrect password
+      if (
+        errorInfo.message === "Incorrect password" ||
+        response.status === 401
+      ) {
+        throw new Error("The password you entered is incorrect.");
+      } else {
+        // For other types of errors
+        throw new Error(`Error ${response.status}: ${errorInfo.message}`);
+      }
     }
+
     const json = await response.json();
     const accessToken = json.accessToken;
     localStorage.setItem("accessToken", accessToken);
