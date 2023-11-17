@@ -1,87 +1,43 @@
-const API_BASE_URL = "https://api.noroff.dev";
-
-async function fetchWithToken(url) {
+async function fetchPosts() {
   try {
-    const token = localStorage.getItem("accessToken");
-    const getData = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    const response = await fetch(url, getData);
-    console.log(response);
-    const json = await response.json();
-    console.log(json);
-    renderPosts(json);
+    const accessToken = localStorage.getItem("accessToken");
+    const response = await fetch(
+      "https://api.noroff.dev/api/v1/social/posts?_author=true&_comments=true&_reactions=true",
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+    const data = await response.json();
+    displayPosts(data);
   } catch (error) {
-    console.log(error);
+    console.error("Error fetching posts:", error);
   }
 }
-// Function to create HTML for each post and append it to the #posts div
-function renderPosts(posts) {
-  const postsContainer = document.getElementById("posts");
-  // Clear any existing content
-  postsContainer.innerHTML = "";
-  // Iterate over the posts array
-  posts.forEach((post) => {
-    const postElement = document.createElement("div");
-    postElement.innerHTML = `
-        <div class="gallery-image">
-        <h2><i class="fa-solid fa-user"></i> ${post.author.name}</h2>
-          <h5>${post.title}</h5>
-          <p>${post.body}</p>
-        </div>
-      `;
-    postElement.setAttribute("data-post-id", post.id); // Set the post ID as an attribute
 
-    // Add an event listener to each post element
-    postElement.addEventListener("click", () => {
-      fetchAndDisplayPost(post.id);
-    });
-    // Append the post HTML to the posts container
-    postsContainer.appendChild(postElement);
+fetchPosts();
+
+function displayPosts(posts) {
+  const postsContainer = document.getElementById("posts");
+  postsContainer.innerHTML = ""; // Clear previous content
+
+  posts.forEach((post) => {
+    postsContainer.innerHTML += `
+          <div class="col mb-3">
+                  <div class="gallery-image">
+                      <h5 class="card-title">${post.title}</h5>
+                      <p class="card-text">${post.body}</p>
+                      <footer>
+                          <small>By ${post.author.name} ${post.created}</small>
+                      </footer>
+                      <button onclick="viewPost(${post.id})" class="btn btn-primary mt-2">View Post</button>
+                  </div>
+          </div>
+      `;
   });
 }
-// Call the function with the API URL
-fetchWithToken(
-  API_BASE_URL +
-    "/api/v1/social/posts?_author=true&_comments=true&_reactions=true"
-);
 
-async function fetchAndDisplayPost(postId) {
-  const url = `${API_BASE_URL}/api/v1/social/posts/${postId}?_author=true&_comments=true&_reactions=true`;
-  try {
-    const token = localStorage.getItem("accessToken");
-    const response = await fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    const post = await response.json();
-    renderSpecificPost(post); // Function to render the specific post details
-  } catch (error) {
-    console.error("Fetching specific post failed:", error);
-    // Handle errors appropriately
-  }
-}
-
-function renderSpecificPost(post) {
-  // Example: rendering post details in a specific div
-  const specificPostContainer = document.getElementById("postSpecific");
-  specificPostContainer.innerHTML = `
-            <h3>${post.title}</h3>
-            <p>Author: ${post.author.name}</p>
-            <p>${post.body}</p>
-            <!-- Render comments and reactions as needed -->
-          `;
-  // Optionally show a modal or bring the user's focus to the rendered content
+function viewPost(postId) {
+  window.location.href = `postSpecific.html?postId=${postId}`;
 }
