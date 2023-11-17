@@ -89,11 +89,19 @@ body {
     margin: 0; // Remove margin from paragraphs to tighten up spacing
   }
 
+  #posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 1rem;
+  }
+
   .gallery-image {
-    background-color: #ddd; // Placeholder color
+    background-color: #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 3rem;
+    border-radius: 8px;
     width: 100%;
-    padding-bottom: 100%; // Creates a square based on width
-    border: 1px solid #ccc;
   }
 }
 

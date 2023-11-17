@@ -14,7 +14,6 @@
       src="https://kit.fontawesome.com/0ea37d4b08.js"
       crossorigin="anonymous"
     ></script>
-    <script src="/JS/fetchPosts.js" defer></script>
     <script src="/JS/logout.js" defer></script>
   </head>
   <body>
@@ -58,37 +57,10 @@
         </div>
       </nav>
     </header>
-    <div class="container text-center mt-5">
-      <label for="filter-posts-select" class="flex flex-col">
-        Filter Posts
-        <select
-          name="filter-posts-select"
-          id="filter-posts-select"
-          class="p-2 shadow transition duration-300 ease-in-out"
-          aria-label="Filter Posts"
-        >
-          <option value="all-posts" selected>All Posts</option>
-          <option value="following">Following</option>
-        </select>
-      </label>
-      <label for="sort-by-select" class="flex flex-col">
-        Sort by
-        <select
-          name="sort-by"
-          id="sort-by-select"
-          class="p-2 shadow transition duration-300 ease-in-out"
-        >
-          <option value="newest">Newest</option>
-          <option value="oldest">Oldest</option>
-          <option value="mostLikes">Most Likes</option>
-          <option value="mostComments">Most Comments</option>
-        </select>
-      </label>
-    </div>
 
     <div class="container text-center mt-5">
       <div class="profile">
-        <div class="row mt-4" id="posts"></div>
+        <div class="row mt-4" id="postSpecific"></div>
       </div>
     </div>
 
