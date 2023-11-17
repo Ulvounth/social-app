@@ -8,8 +8,9 @@ async function loginUser(url, data) {
       },
       body: JSON.stringify(data),
     };
+
     const response = await fetch(url, postData);
-    console.log(response);
+
     if (!response.ok) {
       // If the HTTP status code is not 2xx, throw an error to catch it later
       const errorInfo = await response.json();
@@ -27,9 +28,8 @@ async function loginUser(url, data) {
     }
 
     const json = await response.json();
-    const accessToken = json.accessToken;
+    const { accessToken } = json;
     localStorage.setItem("accessToken", accessToken);
-    console.log(json);
     return json;
   } catch (error) {
     console.error("Login Error:", error);
@@ -61,7 +61,6 @@ loginForm.addEventListener("submit", async function (event) {
 
   // Check if the login was successful
   if (result && result.accessToken) {
-    alert("Login successful!");
     // Redirect to the home page or dashboard as needed
     window.location.href = "/feed";
   }

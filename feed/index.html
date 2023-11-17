@@ -14,9 +14,10 @@
       src="https://kit.fontawesome.com/0ea37d4b08.js"
       crossorigin="anonymous"
     ></script>
-    <script src="/JS/fetchPosts.js" defer></script>
-    <script src="/JS/modal.js" defer></script>
-    <script src="/JS/logout.js" defer></script>
+    <script type="module" src="/src/js/services/index.js" defer></script>
+    <script type="module" src="/src/js/ui/posts.js" defer></script>
+    <script src="/src/js/ui/modal.js" defer></script>
+    <script src="/src/js/utils.js" defer></script>
   </head>
   <body>
     <header class="navbar navbar-expand-lg my-4">
@@ -53,7 +54,7 @@
             <li><hr class="dropdown-divider" /></li>
             <!-- Divider line -->
             <li>
-              <a class="dropdown-item" href="#" id="logoutButton">Log out</a>
+              <button class="dropdown-item" onclick="logout()">Log out</button>
             </li>
           </ul>
         </div>
