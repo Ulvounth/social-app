@@ -14,6 +14,8 @@
       src="https://kit.fontawesome.com/0ea37d4b08.js"
       crossorigin="anonymous"
     ></script>
+    <script src="/JS/modal.js" defer></script>
+    <script src="/JS/logout.js" defer></script>
   </head>
   <body>
     <header class="navbar navbar-expand-lg my-4">
@@ -23,7 +25,7 @@
           <i class="fa-solid fa-house"></i>
         </a>
         <a href="#" class="icon-link">
-          <i class="fa-solid fa-square-plus"></i>
+          <i class="fa-solid fa-square-plus" id="createPost"></i>
         </a>
         <a href="#" class="icon-link">
           <i class="fa-solid fa-magnifying-glass"></i>
@@ -49,7 +51,7 @@
             </li>
             <li><hr class="dropdown-divider" /></li>
             <!-- Divider line -->
-            <li><a class="dropdown-item" href="/logout">Log out</a></li>
+            <a class="dropdown-item" href="#" id="logoutButton">Log out</a>
           </ul>
         </div>
       </nav>
@@ -85,19 +87,7 @@
         </div>
 
         <!-- Gallery -->
-        <div class="row mt-4" id="profile-posts">
-          <!--
-          <div class="col-4 mb-2">
-            <div class="gallery-image placeholder"></div>
-          </div>
-          <div class="col-4 mb-2">
-            <div class="gallery-image placeholder"></div>
-          </div>
-          <div class="col-4 mb-2">
-            <div class="gallery-image placeholder"></div>
-          </div>
-          -->
-        </div>
+        <div class="row mt-4" id="profile-posts"></div>
       </div>
     </div>
 
