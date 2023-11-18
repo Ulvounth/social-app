@@ -1,8 +1,10 @@
-export async function fetchPosts() {
+export async function fetchPosts(endpoint = "posts") {
   try {
     const accessToken = localStorage.getItem("accessToken");
     const response = await fetch(
-      "https://api.noroff.dev/api/v1/social/posts?_author=true&_comments=true&_reactions=true",
+      `https://api.noroff.dev/api/v1/social/posts${
+        endpoint === "following" ? "/following" : ""
+      }?_author=true&_comments=true&_reactions=true`,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,

@@ -29,9 +29,6 @@
         <a href="#" class="icon-link">
           <i class="fa-solid fa-square-plus" id="createPost"></i>
         </a>
-        <a href="#" class="icon-link">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </a>
         <div class="icon-link dropdown">
           <a
             href="#"
@@ -69,22 +66,14 @@
           class="p-2 shadow transition duration-300 ease-in-out"
           aria-label="Filter Posts"
         >
-          <option value="all-posts" selected>All Posts</option>
+          <option value="posts" selected>All Posts</option>
           <option value="following">Following</option>
         </select>
       </label>
-      <label for="sort-by-select" class="flex flex-col">
-        Sort by
-        <select
-          name="sort-by"
-          id="sort-by-select"
-          class="p-2 shadow transition duration-300 ease-in-out"
-        >
-          <option value="newest">Newest</option>
-          <option value="oldest">Oldest</option>
-          <option value="mostLikes">Most Likes</option>
-          <option value="mostComments">Most Comments</option>
-        </select>
+      <label for="filter-posts-select" class="flex flex-col">
+        Search
+        <input id="filter-posts-search" class="form-control p-2 shadow transition duration-300 ease-in-out" type="text" placeholder="Default input" aria-label="default input example">
+          
       </label>
     </div>
 
