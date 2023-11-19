@@ -66,19 +66,6 @@ body {
     font-size: 2rem; // Increase the font size for the username
   }
 
-  button {
-    border: none;
-    background-color: $primary-color;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 20px; // Rounded corners for the button
-    margin-top: 1rem;
-
-    &:hover {
-      background-color: darken($primary-color, 10%);
-    }
-  }
-
   .followers,
   .following {
     font-size: 1.5rem; // Increase the font size for counts
@@ -97,12 +84,56 @@ body {
   }
 
   .gallery-image {
-    background-color: #ddd;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 3rem;
     border-radius: 8px;
     width: 100%;
   }
+
+  .post-card {
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.post-card .card-body {
+    padding: 20px;
+}
+
+.post-card .card-title {
+    margin-bottom: 15px;
+}
+
+.post-card .card-img-top {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.post-card .post-meta {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.post-card .post-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post-card .post-actions .like-count {
+    font-size: 0.9em;
+}
+
+.post-card .post-actions button {
+    margin-right: 10px;
+}
+
+.post-card:hover {
+  transform: translateY(-5px); /* Moves the card up slightly */
+  cursor: pointer; /* Changes the cursor to indicate it's clickable */
+}
+
 }
 
 // Feed styles
