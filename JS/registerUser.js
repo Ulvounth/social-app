@@ -1,5 +1,16 @@
+/**
+ * Base URL for the API.
+ * @type {string}
+ */
 const API_BASE_URL = "https://api.noroff.dev";
 
+/**
+ * Registers a new user by sending a POST request to the specified URL with the provided data.
+ *
+ * @param {string} url The URL endpoint for user registration.
+ * @param {Object} data An object containing the user registration details.
+ * @returns {Promise<Object|null>} A promise that resolves to the response data as an object, or null in case of failure.
+ */
 async function registerUser(url, data) {
   try {
     const postData = {
@@ -27,10 +38,18 @@ async function registerUser(url, data) {
   }
 }
 
-// Select the form element
+// Assuming that the form element exists with an ID 'registerForm' in your HTML.
+/**
+ * Form element for user registration.
+ * @type {HTMLFormElement}
+ */
 const registerForm = document.getElementById("registerForm");
 
-// Add an event listener for the 'submit' event
+/**
+ * Event listener for the 'submit' event of the registration form.
+ * This function prevents the default form submission, validates the form data,
+ * and calls the registerUser function with the input data.
+ */
 registerForm.addEventListener("submit", async function (event) {
   // Prevent the default form submit action
   event.preventDefault();

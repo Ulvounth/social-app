@@ -1,4 +1,10 @@
-// LOGIN
+/**
+ * Attempts to log in a user by sending a POST request with the user's credentials.
+ *
+ * @param {string} url The URL endpoint for user login.
+ * @param {Object} data An object containing the user's login credentials.
+ * @returns {Promise<Object|null>} A promise that resolves to the response data containing the access token, or null in case of failure.
+ */
 async function loginUser(url, data) {
   try {
     const postData = {
@@ -38,8 +44,17 @@ async function loginUser(url, data) {
   }
 }
 
+/**
+ * Form element for user login.
+ * @type {HTMLFormElement}
+ */
 const loginForm = document.getElementById("loginForm");
 
+/**
+ * Event listener for the 'submit' event of the login form.
+ * This function prevents the default form submission, gathers the form data,
+ * and calls the loginUser function with the input data.
+ */
 loginForm.addEventListener("submit", async function (event) {
   event.preventDefault(); // Prevent the default form submit action
 

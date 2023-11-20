@@ -1,3 +1,8 @@
+/**
+ * Creates and inserts a modal for post creation into the DOM.
+ * The modal includes a form for entering post details such as title, body, and media URL.
+ * After inserting the modal into the DOM, it sets up form submission handling.
+ */
 function createModal() {
   const modalHTML = `
         <div class="modal fade" id="createPostModal" tabindex="-1" aria-labelledby="createPostModalLabel" aria-hidden="true">
@@ -42,6 +47,13 @@ document.getElementById("createPost").addEventListener("click", function () {
   createPostModal.show();
 });
 
+/**
+ * Sets up the form submission logic for creating a new post.
+ * It attaches an event listener to the 'createPostForm' inside the modal,
+ * which handles the form submission. The function prevents default form submission,
+ * gathers form data, and sends a POST request to the server. On successful post creation,
+ * it hides the modal.
+ */
 function setupFormSubmission() {
   document
     .getElementById("createPostForm")

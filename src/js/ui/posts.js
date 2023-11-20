@@ -19,6 +19,11 @@ filterSearch.addEventListener("input", async (e) => {
   displayPosts(filteredPosts);
 });
 
+/**
+ * Display posts on the page.
+ *
+ * @param {Array} posts An array of post objects to be displayed.
+ */
 async function displayPosts(posts) {
   const postsContainer = document.getElementById("posts");
   postsContainer.innerHTML = ""; // Clear previous content
@@ -81,6 +86,11 @@ async function displayPosts(posts) {
     }
   });
 
+  /**
+   * Create and show an edit post modal for a given post.
+   *
+   * @param {Object} post The post object to be edited.
+   */
   function editModal(post) {
     console.log(post);
     // Generate a unique ID for the modal and form
@@ -129,6 +139,17 @@ async function displayPosts(posts) {
     setupFormSubmission(post, formId, modalId);
   }
 
+  /**
+   * Set up form submission logic for editing a post.
+   *
+   * This function attaches an event listener to the form within the modal,
+   * which handles the form submission, performs validation, and sends a PUT request
+   * with the updated post data.
+   *
+   * @param {Object} post The original post object that is being edited.
+   * @param {string} formId The ID of the form element within the modal.
+   * @param {string} modalId The ID of the modal element.
+   */
   function setupFormSubmission(post, formId, modalId) {
     const form = document.getElementById(formId);
     form.onsubmit = async function (e) {
@@ -170,6 +191,11 @@ async function displayPosts(posts) {
     };
   }
 
+  /**
+   * Initialize the edit process for a post by creating a modal and displaying it.
+   *
+   * @param {Object} post The post object to be edited.
+   */
   function editPost(post) {
     editModal(post);
     let modal = new bootstrap.Modal(
