@@ -12,16 +12,57 @@ const postId = urlParams.get("postId");
 async function displayPost() {
   const post = await fetchPost(postId);
   if (postContainer) {
-    const { title, body, author, created } = post; // Destructuring the post object
+    const { title, body, author, created, media, reactions } = post; // Destructuring the post object with additional fields
+    const postImage = media
+      ? `<img src="${media}" class="card-img-top" alt="Post image">`
+      : "";
+
+    // Adding edit and delete buttons conditionally
+    const editButtonHTML = author.name.includes("Ulvounth")
+      ? `<button class="edit-post btn btn-secondary position-absolute top-0 end-0 m-3">
+              <i class="fa-solid fa-pencil"></i>
+            </button>`
+      : "";
+
+    const deleteButtonHTML = author.name.includes("Ulvounth")
+      ? `<button class="btn btn-danger mt-2">Delete Post</button>`
+      : "";
+
     postContainer.innerHTML = `
-        <div class="gallery-image">
-          <h5 class="card-title">${title}</h5>
-          <p class="card-text">${body}</p>
-          <footer>
-            <small>By ${author.name} ${created}</small>
-          </footer>
+        <div class="post-card col mb-5 rounded shadow-lg position-relative">
+          ${editButtonHTML}
+          <div class="post-content p-5 rounded w-100">
+            <h1 class="mb-3">${title}</h1>
+            ${postImage}
+            <p class="p-4">${body}</p>
+            <footer>
+              <small class="text-muted">By ${author.name} - ${new Date(
+      created
+    ).toLocaleTimeString()}</small>
+            </footer>
+            <div class="d-flex justify-content-end">
+              <button class="btn btn-primary btn-sm me-2">Like</button>
+              <button class="btn btn-secondary btn-sm">Comment</button>
+            </div>
+            ${deleteButtonHTML}
+          </div>
         </div>
-      `;
+        `;
+
+    // Add event listeners for edit and delete buttons if they exist
+    const editButton = postContainer.querySelector(".edit-post");
+    if (editButton) {
+      editButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        editPost(post);
+      });
+    }
+
+    const deleteButton = postContainer.querySelector(".btn-danger");
+    if (deleteButton) {
+      deleteButton.addEventListener("click", () => deletePost(post.id));
+    }
   }
 }
 

@@ -30,9 +30,10 @@ async function displayPosts(posts) {
 
   posts.forEach((post) => {
     const postDiv = document.createElement("div");
-    postDiv.className = "post-card col mb-3 position-relative";
+    postDiv.className =
+      "post-card col mb-5 rounded shadow-lg position-relative";
     const postImage = post.media
-      ? `<img src="${post.media}" class="card-img-top" alt="Post image">`
+      ? `<img src="${post.media}" class="card-img" alt="Post image">`
       : "";
 
     const editButtonHTML = post.author.name.includes("Ulvounth")
@@ -46,18 +47,20 @@ async function displayPosts(posts) {
         <a href="post.html?postId=${
           post.id
         }" class="text-decoration-none text-dark">
-          <div class="gallery-image">
-            <h5 class="card-title">${post.title}</h5>
+          <div class="post-content p-5 rounded w-100">
+            <h1 class="mb-3">${post.title}</h1>
             ${postImage}
-            <p class="card-text p-4">${post.body}</p>
-            <div class="post-meta">
+            <p class="p-4">${post.body}</p>
+            <div class="mb-3">
               <small class="text-muted">By ${post.author.name} - ${new Date(
       post.created
     ).toLocaleTimeString()}</small>
             </div>
-            <div class="post-actions">
-              <span class="like-count">${post.reactions.length} likes</span>
-              <button class="btn btn-primary btn-sm">Like</button>
+            <div class="d-flex">
+              <span class="flex-grow-1 text-start">${
+                post.reactions.length
+              } likes</span>
+              <button class="btn btn-primary btn-sm me-2">Like</button>
               <button class="btn btn-secondary btn-sm">Comment</button>
             </div>
           </div>
@@ -68,9 +71,9 @@ async function displayPosts(posts) {
     if (post.author.name.includes("Ulvounth")) {
       const deleteButton = document.createElement("button");
       deleteButton.textContent = "Delete Post";
-      deleteButton.className = "btn btn-danger mt-2";
+      deleteButton.className = "btn btn-danger mt-2 btn-sm";
       deleteButton.addEventListener("click", () => deletePost(post.id));
-      postDiv.querySelector(".gallery-image").appendChild(deleteButton);
+      postDiv.querySelector(".post-content").appendChild(deleteButton);
     }
 
     postsContainer.appendChild(postDiv);
