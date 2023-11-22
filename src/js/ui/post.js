@@ -1,6 +1,7 @@
 import { fetchPost } from "../services/index.js";
 
 const postContainer = document.getElementById("post");
+const documentTitle = document.querySelector("title");
 const urlParams = new URLSearchParams(window.location.search);
 const postId = urlParams.get("postId");
 
@@ -36,9 +37,13 @@ async function displayPost() {
             ${postImage}
             <p class="p-4">${body}</p>
             <footer>
-              <small class="text-muted">By ${author.name} - ${new Date(
-      created
-    ).toLocaleTimeString()}</small>
+            <small class="text-muted">By ${post.author.name} - ${new Date(
+      post.created
+    ).toLocaleString("en-US", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    })}</small>
+
             </footer>
             <div class="d-flex justify-content-end">
               <button class="btn btn-primary btn-sm me-2">Like</button>
@@ -48,6 +53,8 @@ async function displayPost() {
           </div>
         </div>
         `;
+
+    documentTitle.innerHTML = `${title}`;
 
     // Add event listeners for edit and delete buttons if they exist
     const editButton = postContainer.querySelector(".edit-post");

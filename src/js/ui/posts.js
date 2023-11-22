@@ -28,6 +28,8 @@ async function displayPosts(posts) {
   const postsContainer = document.getElementById("posts");
   postsContainer.innerHTML = ""; // Clear previous content
 
+  console.log(posts);
+
   posts.forEach((post) => {
     const postDiv = document.createElement("div");
     postDiv.className =
@@ -52,9 +54,13 @@ async function displayPosts(posts) {
             ${postImage}
             <p class="p-4">${post.body}</p>
             <div class="mb-3">
-              <small class="text-muted">By ${post.author.name} - ${new Date(
+            <small class="text-muted">By ${post.author.name} - ${new Date(
       post.created
-    ).toLocaleTimeString()}</small>
+    ).toLocaleString("en-US", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    })}</small>
+
             </div>
             <div class="d-flex">
               <span class="flex-grow-1 text-start">${

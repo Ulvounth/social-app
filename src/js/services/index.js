@@ -17,6 +17,7 @@ export async function fetchPosts(endpoint = "posts") {
         },
       }
     );
+
     return await response.json();
   } catch (error) {
     console.error("Error fetching posts:", error);
