@@ -36,7 +36,7 @@ function createModal() {
 
   document.body.insertAdjacentHTML("beforeend", modalHTML);
 
-  setupFormSubmission();
+  createModalSubmission();
 }
 
 document.getElementById("createPost").addEventListener("click", function () {
@@ -54,7 +54,7 @@ document.getElementById("createPost").addEventListener("click", function () {
  * gathers form data, and sends a POST request to the server. On successful post creation,
  * it hides the modal.
  */
-function setupFormSubmission() {
+function createModalSubmission() {
   document
     .getElementById("createPostForm")
     .addEventListener("submit", async function (e) {

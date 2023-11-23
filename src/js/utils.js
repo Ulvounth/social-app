@@ -74,7 +74,7 @@ function editModal(post) {
   document.body.insertAdjacentHTML("beforeend", modalHTML);
 
   // Now set up the form submission
-  setupFormSubmission(post, formId, modalId);
+  editModalSubmission(post, formId, modalId);
 }
 
 /**
@@ -88,7 +88,7 @@ function editModal(post) {
  * @param {string} formId The ID of the form element within the modal.
  * @param {string} modalId The ID of the modal element.
  */
-function setupFormSubmission(post, formId, modalId) {
+function editModalSubmission(post, formId, modalId) {
   const form = document.getElementById(formId);
   form.onsubmit = async function (e) {
     e.preventDefault();
@@ -129,4 +129,4 @@ function setupFormSubmission(post, formId, modalId) {
   };
 }
 
-export { decodedAccessToken, logout, editPost, editModal };
+export { decodedAccessToken, logout, editPost, editModal, editModalSubmission };
