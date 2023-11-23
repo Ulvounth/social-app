@@ -1,4 +1,9 @@
-import { decodedAccessToken, editPost, editModal } from "../utils.js";
+import {
+  decodedAccessToken,
+  editPost,
+  editModal,
+  editModalSubmission,
+} from "../utils.js";
 import { fetchUserPosts, deletePost } from "../services/api.js";
 
 document.addEventListener("DOMContentLoaded", async () => {

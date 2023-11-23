@@ -1,4 +1,5 @@
-import { fetchPost } from "../services/api.js";
+import { fetchPost, deletePost } from "../services/api.js";
+import { editPost, editModal, editModalSubmission } from "../utils.js";
 
 const postContainer = document.getElementById("post");
 const documentTitle = document.querySelector("title");
