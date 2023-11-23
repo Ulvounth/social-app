@@ -1,10 +1,4 @@
 /**
- * Base URL for the API.
- * @type {string}
- */
-const API_BASE_URL = "https://api.noroff.dev";
-
-/**
  * Registers a new user by sending a POST request to the specified URL with the provided data.
  *
  * @param {string} url The URL endpoint for user registration.
@@ -83,7 +77,7 @@ registerForm.addEventListener("submit", async function (event) {
   };
 
   const result = await registerUser(
-    `${API_BASE_URL}/api/v1/social/auth/register`,
+    `https://api.noroff.dev/api/v1/social/auth/register`,
     data
   );
 

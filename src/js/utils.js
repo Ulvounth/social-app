@@ -30,7 +30,6 @@ function editPost(post) {
 }
 
 function editModal(post) {
-  console.log(post);
   // Generate a unique ID for the modal and form
   const modalId = `editPostModal-${post.id}`;
   const formId = `editPostForm-${post.id}`;

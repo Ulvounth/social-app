@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               <i class="fa-solid fa-pencil"></i>
             </button>`;
 
-    const deleteButtonHTML = `<button class="btn btn-danger mt-2">Delete Post</button>`;
+    const deleteButtonHTML = `<button class="btn btn-danger mt-2 btn-sm">Delete Post</button>`;
 
     postElement.innerHTML = `
         <div class="post-card col mb-5 rounded shadow-lg position-relative">

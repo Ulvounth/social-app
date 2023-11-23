@@ -29,8 +29,6 @@ async function displayPosts(posts) {
   const postsContainer = document.getElementById("posts");
   postsContainer.innerHTML = ""; // Clear previous content
 
-  console.log(posts);
-
   posts.forEach((post) => {
     const postDiv = document.createElement("div");
     postDiv.className =

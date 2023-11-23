@@ -62,6 +62,11 @@ loginForm.addEventListener("submit", async function (event) {
   const email = document.getElementById("loginEmail").value;
   const password = document.getElementById("loginPassword").value;
 
+  if (!email.endsWith("@stud.noroff.no") && !email.endsWith("@noroff.no")) {
+    alert("Please use a valid Noroff email address.");
+    return;
+  }
+
   // Create the data object
   const data = {
     email: email,

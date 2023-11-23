@@ -4,9 +4,11 @@
  * @param {string} [endpoint='posts'] The API endpoint to fetch the posts from.
  * @returns {Promise<Array>} A promise that resolves to an array of post objects.
  */
+
+const accessToken = localStorage.getItem("accessToken");
+
 export async function fetchPosts(endpoint = "posts") {
   try {
-    const accessToken = localStorage.getItem("accessToken");
     const response = await fetch(
       `https://api.noroff.dev/api/v1/social/posts${
         endpoint === "following" ? "/following" : ""
@@ -32,7 +34,6 @@ export async function fetchPosts(endpoint = "posts") {
  */
 export async function fetchPost(postId) {
   try {
-    const accessToken = localStorage.getItem("accessToken");
     const response = await fetch(
       `https://api.noroff.dev/api/v1/social/posts/${postId}?_author=true`,
       {
@@ -55,8 +56,6 @@ export async function fetchPost(postId) {
  */
 export async function deletePost(postId) {
   if (confirm("Are you sure you want to delete this post?")) {
-    const accessToken = localStorage.getItem("accessToken");
-
     try {
       const response = await fetch(
         `https://api.noroff.dev/api/v1/social/posts/${postId}`,
@@ -81,7 +80,6 @@ export async function deletePost(postId) {
 
 export async function fetchUserPosts(name) {
   try {
-    const accessToken = localStorage.getItem("accessToken");
     const response = await fetch(
       `https://api.noroff.dev/api/v1/social/profiles/${name}/posts`,
       {
