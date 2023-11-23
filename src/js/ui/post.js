@@ -21,9 +21,9 @@ async function displayPost() {
 
     // Adding edit and delete buttons conditionally
     const editButtonHTML = author.name.includes("Ulvounth")
-      ? `<button class="edit-post btn btn-secondary position-absolute top-0 end-0 m-3">
-              <i class="fa-solid fa-pencil"></i>
-            </button>`
+      ? `<button class="edit-post btn btn-secondary position-absolute top-0 end-0 m-3" aria-label="Edit post">
+       <i class="fa-solid fa-pencil"></i>
+     </button>`
       : "";
 
     const deleteButtonHTML = author.name.includes("Ulvounth")

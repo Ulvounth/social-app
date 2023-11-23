@@ -23,11 +23,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       : "";
 
     // Adding edit and delete buttons conditionally
-    const editButtonHTML = `<button class="edit-post btn btn-secondary position-absolute top-0 end-0 m-3">
-              <i class="fa-solid fa-pencil"></i>
-            </button>`;
+    const editButtonHTML = `<button class="edit-post btn btn-secondary position-absolute top-0 end-0 m-3" aria-label="Edit post titled ${title}">
+                          <i class="fa-solid fa-pencil"></i>
+                        </button>`;
 
-    const deleteButtonHTML = `<button class="btn btn-danger mt-2 btn-sm">Delete Post</button>`;
+    const deleteButtonHTML = `<button class="btn btn-danger mt-2 btn-sm" aria-label="Delete post titled ${title}">Delete Post</button>`;
 
     postElement.innerHTML = `
         <div class="post-card col mb-5 rounded shadow-lg position-relative">

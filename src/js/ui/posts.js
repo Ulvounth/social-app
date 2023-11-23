@@ -38,7 +38,7 @@ async function displayPosts(posts) {
       : "";
 
     const editButtonHTML = post.author.name.includes("Ulvounth")
-      ? `<button class="edit-post btn btn-secondary position-absolute top-0 end-0 m-3">
+      ? `<button class="edit-post btn btn-secondary position-absolute top-0 end-0 m-3" aria-label="Edit post titled ${post.title}">
             <i class="fa-solid fa-pencil"></i>
           </button>`
       : "";
@@ -59,14 +59,17 @@ async function displayPosts(posts) {
       dateStyle: "medium",
       timeStyle: "short",
     })}</small>
-
             </div>
             <div class="d-flex">
               <span class="flex-grow-1 text-start">${
                 post.reactions.length
               } likes</span>
-              <button class="btn btn-primary btn-sm me-2">Like</button>
-              <button class="btn btn-secondary btn-sm">Comment</button>
+              <button class="btn btn-primary btn-sm me-2" aria-label="Like post titled ${
+                post.title
+              }">Like</button>
+              <button class="btn btn-secondary btn-sm" aria-label="Comment on post titled ${
+                post.title
+              }">Comment</button>
             </div>
           </div>
         </a>
@@ -77,6 +80,10 @@ async function displayPosts(posts) {
       const deleteButton = document.createElement("button");
       deleteButton.textContent = "Delete Post";
       deleteButton.className = "btn btn-danger mt-2 btn-sm";
+      deleteButton.setAttribute(
+        "aria-label",
+        `Delete post titled ${post.title}`
+      );
       deleteButton.addEventListener("click", () => deletePost(post.id));
       postDiv.querySelector(".post-content").appendChild(deleteButton);
     }
@@ -94,6 +101,7 @@ async function displayPosts(posts) {
     }
   });
 }
+
 document.addEventListener("DOMContentLoaded", async () => {
   const posts = await fetchPosts();
 
