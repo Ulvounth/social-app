@@ -1,0 +1,20 @@
+.background {
+    background: linear-gradient(90deg, rgba(223,223,223,1) 0%, rgba(239,218,241,1) 25%, rgba(81,211,237,1) 100%);
+}
+
+.icon-link {
+    font-size: 3rem;
+}
+  
+select {
+    cursor: pointer;
+}
+    
+.post-card:hover {
+    transform: translateY(-5px); /* Moves the card up slightly */
+    cursor: pointer; /* Changes the cursor to indicate it's clickable */
+}
+  
+.btn-close {
+    filter: invert(1);
+}
