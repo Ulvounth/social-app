@@ -1,4 +1,4 @@
-import { fetchPosts, deletePost } from "../services/index.js";
+import { fetchPosts, deletePost } from "../services/api.js";
 
 const filterSelect = document.getElementById("filter-posts-select");
 const filterSearch = document.getElementById("filter-posts-search");

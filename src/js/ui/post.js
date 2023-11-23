@@ -1,4 +1,4 @@
-import { fetchPost } from "../services/index.js";
+import { fetchPost } from "../services/api.js";
 
 const postContainer = document.getElementById("post");
 const documentTitle = document.querySelector("title");
