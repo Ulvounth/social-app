@@ -82,6 +82,6 @@ loginForm.addEventListener("submit", async function (event) {
   // Check if the login was successful
   if (result && result.accessToken) {
     // Redirect to the home page or dashboard as needed
-    window.location.href = "/feed";
+    window.location.href = "/pages/feed";
   }
 });

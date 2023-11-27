@@ -79,7 +79,7 @@ function createModalSubmission() {
         );
 
         if (response.ok) {
-          var createPostModal = bootstrap.Modal.getInstance(
+          let createPostModal = bootstrap.Modal.getInstance(
             document.getElementById("createPostModal")
           );
           createPostModal.hide();

@@ -30,61 +30,100 @@ async function displayPosts(posts) {
   postsContainer.innerHTML = ""; // Clear previous content
 
   posts.forEach((post) => {
+    const { title, body, created, media, author, reactions, id } = post;
+
     const postDiv = document.createElement("div");
     postDiv.className =
-      "post-card col mb-5 rounded shadow-lg position-relative";
-    const postImage = post.media
-      ? `<img src="${post.media}" class="card-img" alt="Post image">`
-      : "";
+      "post-card col mb-5 p-4 rounded shadow-lg position-relative";
 
-    const editButtonHTML = post.author.name.includes("Ulvounth")
-      ? `<button class="edit-post btn btn-secondary position-absolute top-0 end-0 m-3" aria-label="Edit post titled ${post.title}">
-            <i class="fa-solid fa-pencil"></i>
-          </button>`
-      : "";
+    // Post title
+    const postTitle = document.createElement("h1");
+    postTitle.className = "mb-3";
+    postTitle.textContent = title;
+    postDiv.appendChild(postTitle);
 
-    postDiv.innerHTML = `
-        ${editButtonHTML}
-        <a href="post.html?postId=${
-          post.id
-        }" class="text-decoration-none text-dark">
-          <div class="post-content p-5 rounded w-100">
-            <h1 class="mb-3">${post.title}</h1>
-            ${postImage}
-            <p class="p-4">${post.body}</p>
-            <div class="mb-3">
-            <small class="text-muted">By ${post.author.name} - ${new Date(
-      post.created
-    ).toLocaleString("en-US", {
-      dateStyle: "medium",
-      timeStyle: "short",
-    })}</small>
-            </div>
-            <div class="d-flex">
-              <span class="flex-grow-1 text-start">${
-                post.reactions.length
-              } likes</span>
-              <button class="btn btn-primary btn-sm me-2" aria-label="Like post titled ${
-                post.title
-              }">Like</button>
-              <button class="btn btn-secondary btn-sm" aria-label="Comment on post titled ${
-                post.title
-              }">Comment</button>
-            </div>
-          </div>
-        </a>
-      `;
+    // Create the post image if it exists
+    if (media) {
+      const img = document.createElement("img");
+      img.src = media;
+      img.className = "card-img";
+      img.style = "max-width: 800px; max-height: 800px";
+      img.alt = "Post image";
+      postDiv.appendChild(img);
+    }
+
+    // Create the edit button if the author is "Ulvounth"
+    if (author.name.includes("Ulvounth")) {
+      const editButton = document.createElement("button");
+      editButton.className =
+        "edit-post btn btn-secondary position-absolute top-0 end-0 m-3";
+      editButton.setAttribute("aria-label", `Edit post titled ${title}`);
+      const icon = document.createElement("i");
+      icon.className = "fa-solid fa-pencil";
+      editButton.appendChild(icon);
+      postDiv.appendChild(editButton);
+    }
+
+    // Create link element
+    const postLink = document.createElement("a");
+    postLink.href = `post.html?postId=${id}`;
+    postLink.className = "text-decoration-none text-dark";
+
+    // Create post content div
+    const postContentDiv = document.createElement("div");
+    postContentDiv.className = "post-content p-5 rounded w-100";
+
+    // Post body
+    const postBody = document.createElement("p");
+    postBody.className = "p-4";
+    postBody.textContent = body;
+    postContentDiv.appendChild(postBody);
+
+    // Post footer for author and date
+    const postFooter = document.createElement("footer");
+    const postAuthor = document.createElement("small");
+    postAuthor.className = "text-muted";
+    postAuthor.textContent = `By ${author.name} - ${new Date(
+      created
+    ).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" })}`;
+    postFooter.appendChild(postAuthor);
+    postContentDiv.appendChild(postFooter);
+
+    // Interaction buttons (Like and Comment)
+    const interactionDiv = document.createElement("div");
+    interactionDiv.className = "d-flex justify-content-end";
+
+    // Likes count
+    const likesSpan = document.createElement("span");
+    likesSpan.className = "flex-grow-1 text-start";
+    likesSpan.textContent = `${reactions.length} likes`;
+    interactionDiv.appendChild(likesSpan);
+
+    // Like button
+    const likeButton = document.createElement("button");
+    likeButton.className = "btn btn-primary btn-sm me-2";
+    likeButton.setAttribute("aria-label", `Like post titled ${title}`);
+    likeButton.textContent = "Like";
+    interactionDiv.appendChild(likeButton);
+
+    // Comment button
+    const commentButton = document.createElement("button");
+    commentButton.className = "btn btn-secondary btn-sm";
+    commentButton.setAttribute("aria-label", `Comment on post titled ${title}`);
+    commentButton.textContent = "Comment";
+    interactionDiv.appendChild(commentButton);
+
+    postContentDiv.appendChild(interactionDiv);
+    postLink.appendChild(postContentDiv);
+    postDiv.appendChild(postLink);
 
     // Check if the delete button should be added
-    if (post.author.name.includes("Ulvounth")) {
+    if (author.name.includes("Ulvounth")) {
       const deleteButton = document.createElement("button");
       deleteButton.textContent = "Delete Post";
       deleteButton.className = "btn btn-danger mt-2 btn-sm";
-      deleteButton.setAttribute(
-        "aria-label",
-        `Delete post titled ${post.title}`
-      );
-      deleteButton.addEventListener("click", () => deletePost(post.id));
+      deleteButton.setAttribute("aria-label", `Delete post titled ${title}`);
+      deleteButton.addEventListener("click", () => deletePost(id));
       postDiv.querySelector(".post-content").appendChild(deleteButton);
     }
 

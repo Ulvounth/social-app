@@ -3,7 +3,7 @@ function logout() {
   localStorage.removeItem("accessToken");
 
   // Redirect to login page
-  window.location.href = "../index.html";
+  window.location.href = "/index.html";
 }
 
 function decodedAccessToken() {

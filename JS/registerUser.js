@@ -84,7 +84,7 @@ registerForm.addEventListener("submit", async function (event) {
   // Check if the registration was successful
   if (result && result.status === "success") {
     alert("Registration successful!");
-    // Redirect to login or profile page as needed
-    // window.location.href = '/login';
+
+    window.location.href = "/index.html";
   }
 });

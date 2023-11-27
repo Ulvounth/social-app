@@ -35,7 +35,7 @@ export async function fetchPost(postId) {
   try {
     const accessToken = localStorage.getItem("accessToken");
     const response = await fetch(
-      `https://api.noroff.dev/api/v1/social/posts/${postId}?_author=true`,
+      `https://api.noroff.dev/api/v1/social/posts/${postId}?_author=true&_reactions=true`,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -83,7 +83,7 @@ export async function fetchUserPosts(name) {
   try {
     const accessToken = localStorage.getItem("accessToken");
     const response = await fetch(
-      `https://api.noroff.dev/api/v1/social/profiles/${name}/posts`,
+      `https://api.noroff.dev/api/v1/social/profiles/${name}/posts?_author=true&_reactions=true`,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
