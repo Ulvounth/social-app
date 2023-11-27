@@ -24,7 +24,10 @@ async function registerUser(url, data) {
     }
 
     const json = await response.json();
-    return json;
+    return {
+      data: json,
+      status: "success",
+    };
   } catch (error) {
     console.error("Registration Error:", error);
     alert(`Registration failed: ${error.message}`);
@@ -82,7 +85,7 @@ registerForm.addEventListener("submit", async function (event) {
   );
 
   // Check if the registration was successful
-  if (result && result.status === "success") {
+  if (result.status === "success") {
     alert("Registration successful!");
 
     window.location.href = "/index.html";

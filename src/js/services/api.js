@@ -22,6 +22,9 @@ export async function fetchPosts(endpoint = "posts") {
     return await response.json();
   } catch (error) {
     console.error("Error fetching posts:", error);
+    const postsContainer = document.getElementById("posts");
+
+    postsContainer.innerHTML = `<div class="error">There was an error fetching the posts: ${error}</div>`;
   }
 }
 

@@ -18,3 +18,9 @@ select {
 .btn-close {
     filter: invert(1);
 }
+
+.error {
+    padding: 2rem;
+    border: 1px red solid;
+    color: red;
+}
