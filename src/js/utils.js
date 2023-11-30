@@ -128,4 +128,17 @@ function editModalSubmission(post, formId, modalId) {
   };
 }
 
-export { decodedAccessToken, logout, editPost, editModal, editModalSubmission };
+function displayMessage(parent, messageType, message) {
+  const container = document.querySelector(parent);
+
+  container.innerHTML = `<div class="alert ${messageType}">${message}</div>`;
+}
+
+export {
+  decodedAccessToken,
+  logout,
+  editPost,
+  editModal,
+  editModalSubmission,
+  displayMessage,
+};

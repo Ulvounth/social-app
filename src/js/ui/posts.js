@@ -1,5 +1,10 @@
 import { fetchPosts, deletePost } from "../services/api.js";
-import { editModalSubmission, editPost, editModal } from "../utils.js";
+import {
+  editModalSubmission,
+  editPost,
+  editModal,
+  displayMessage,
+} from "../utils.js";
 
 const filterSelect = document.getElementById("filter-posts-select");
 const filterSearch = document.getElementById("filter-posts-search");
