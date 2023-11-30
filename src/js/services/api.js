@@ -1,5 +1,3 @@
-import { displayMessage } from "../utils.js";
-
 /**
  * Fetch a list of posts from the server.
  *
@@ -7,30 +5,20 @@ import { displayMessage } from "../utils.js";
  * @returns {Promise<Array>} A promise that resolves to an array of post objects.
  */
 
-export async function fetchPosts(endpoint = "posts") {
-  try {
-    const accessToken = localStorage.getItem("accessToken");
-    const response = await fetch(
-      `https://api.noroff.dev/api/v1/social/posts${
-        endpoint === "following" ? "/following" : ""
-      }?_author=true&_comments=true&_reactions=true`,
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
-    );
+export async function fetchPosts(endpoint = 'posts') {
+  const accessToken = localStorage.getItem('accessToken');
+  const response = await fetch(
+    `https://api.noroff.dev/api/v1/social/posts${
+      endpoint === 'following' ? '/following' : ''
+    }?_author=true&_comments=true&_reactions=true`,
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    },
+  );
 
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching posts:", error);
-
-    displayMessage(
-      "posts",
-      "alert-danger",
-      "There was an error fetching the posts"
-    );
-  }
+  return await response.json();
 }
 
 /**
@@ -40,20 +28,16 @@ export async function fetchPosts(endpoint = "posts") {
  * @returns {Promise<Object>} A promise that resolves to the post object.
  */
 export async function fetchPost(postId) {
-  try {
-    const accessToken = localStorage.getItem("accessToken");
-    const response = await fetch(
-      `https://api.noroff.dev/api/v1/social/posts/${postId}?_author=true&_reactions=true`,
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
-    );
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching specific post:", error);
-  }
+  const accessToken = localStorage.getItem('accessToken');
+  const response = await fetch(
+    `https://api.noroff.dev/api/v1/social/posts/${postId}?_author=true&_reactions=true`,
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    },
+  );
+  return await response.json();
 }
 
 /**
@@ -63,43 +47,37 @@ export async function fetchPost(postId) {
  * @returns {Promise<void>} A promise that resolves when the post has been deleted.
  */
 export async function deletePost(postId) {
-  if (confirm("Are you sure you want to delete this post?")) {
-    try {
-      const accessToken = localStorage.getItem("accessToken");
-      const response = await fetch(
-        `https://api.noroff.dev/api/v1/social/posts/${postId}`,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
+  if (confirm('Are you sure you want to delete this post?')) {
+    const accessToken = localStorage.getItem('accessToken');
+    const response = await fetch(`https://api.noroff.dev/api/v1/social/posts/${postId}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
 
-      if (response.ok) {
-        window.location.reload();
-      } else {
-        // Handle errors
-      }
-    } catch (error) {
-      console.error("Error deleting post:", error);
+    if (response.ok) {
+      window.location.reload();
+    } else {
+      const errorData = await response.json();
+      throw new Error(`Error deleting post: ${errorData.message}`);
     }
   }
 }
 
 export async function fetchUserPosts(name) {
   try {
-    const accessToken = localStorage.getItem("accessToken");
+    const accessToken = localStorage.getItem('accessToken');
     const response = await fetch(
       `https://api.noroff.dev/api/v1/social/profiles/${name}/posts?_author=true&_reactions=true`,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
-      }
+      },
     );
     return await response.json();
   } catch (error) {
-    console.error("Error fetching specific post:", error);
+    console.error('Error fetching specific post:', error);
   }
 }
