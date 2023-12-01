@@ -82,17 +82,16 @@ function editModalSubmission(post, formId, modalId) {
 
       if (response.ok) {
         // Handle successful update here...
-        // For example, refresh the post list or update the UI accordingly
         const modalElement = document.getElementById(modalId);
         const modalInstance = bootstrap.Modal.getInstance(modalElement);
         modalInstance.hide();
         modalElement.remove(); // Clean up the modal from DOM after closing
         window.location.reload();
-      } else {
-        // Handle errors, such as displaying a message to the user
       }
     } catch (error) {
       console.error('Error updating post:', error);
+
+      alert('Error updating post, please try again.');
     }
   };
 }
