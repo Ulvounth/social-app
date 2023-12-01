@@ -66,18 +66,14 @@ export async function deletePost(postId) {
 }
 
 export async function fetchUserPosts(name) {
-  try {
-    const accessToken = localStorage.getItem('accessToken');
-    const response = await fetch(
-      `https://api.noroff.dev/api/v1/social/profiles/${name}/posts?_author=true&_reactions=true`,
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
+  const accessToken = localStorage.getItem('accessToken');
+  const response = await fetch(
+    `https://api.noroff.dev/api/v1/social/profiles/${name}/posts?_author=true&_reactions=true`,
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
       },
-    );
-    return await response.json();
-  } catch (error) {
-    console.error('Error fetching specific post:', error);
-  }
+    },
+  );
+  return await response.json();
 }
