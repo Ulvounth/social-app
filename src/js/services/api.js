@@ -77,3 +77,23 @@ export async function fetchUserPosts(name) {
   );
   return await response.json();
 }
+
+export async function reactToPost(postId, symbol) {
+  const accessToken = localStorage.getItem('accessToken');
+  const response = await fetch(
+    `https://api.noroff.dev/api/v1/social/posts/${postId}/react/${symbol}`,
+    {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    },
+  );
+
+  if (response.ok) {
+    window.location.reload();
+  } else {
+    const errorData = await response.json();
+    throw new Error(`Error liking post: ${errorData.message}`);
+  }
+}

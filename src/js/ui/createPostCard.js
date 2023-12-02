@@ -1,4 +1,5 @@
 import { createElement, editPost } from '../utils.js';
+import { deletePost } from '../services/api.js';
 import {
   createEditButton,
   createDeleteButton,
@@ -8,7 +9,7 @@ import {
 import { decodedAccessToken } from '../auth/index.js';
 
 export function createPostCard({ post, withHref = true }) {
-  const { title, author, reactions } = post;
+  const { author } = post;
 
   const { name } = decodedAccessToken();
 
@@ -17,7 +18,7 @@ export function createPostCard({ post, withHref = true }) {
   });
 
   const postContent = createPostContent({ post, withHref });
-  const interactionDiv = createInteractionDiv(reactions, title);
+  const interactionDiv = createInteractionDiv(post);
 
   if (author.name.includes(name)) {
     const editButton = createEditButton((e) => {
@@ -26,7 +27,17 @@ export function createPostCard({ post, withHref = true }) {
       editPost(post);
     });
 
-    const deleteButton = createDeleteButton();
+    const deleteButton = createDeleteButton(async (e) => {
+      try {
+        e.preventDefault();
+        e.stopPropagation();
+        await deletePost(post.id);
+      } catch (error) {
+        console.error('Error deleting post: ', error);
+
+        alert('Error deleting post, please try again.');
+      }
+    });
 
     postCard.appendChild(editButton);
     postContent.appendChild(deleteButton);

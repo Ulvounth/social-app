@@ -21,9 +21,6 @@ export function createNavigation() {
               <a class="dropdown-item" href="/pages/profile">Profile</a>
           </li>
           <li>
-              <a class="dropdown-item" href="/settings/index.html">Settings</a>
-          </li>
-          <li>
               <hr class="dropdown-divider" />
           </li>
           <!-- Divider line -->

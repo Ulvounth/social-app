@@ -34,16 +34,14 @@ function createModal() {
         </div>
     `;
 
-  document.body.insertAdjacentHTML("beforeend", modalHTML);
+  document.body.insertAdjacentHTML('beforeend', modalHTML);
 
   createModalSubmission();
 }
 
-document.getElementById("createPost").addEventListener("click", function () {
+document.getElementById('createPost').addEventListener('click', function () {
   createModal();
-  let createPostModal = new bootstrap.Modal(
-    document.getElementById("createPostModal")
-  );
+  let createPostModal = new bootstrap.Modal(document.getElementById('createPostModal'));
   createPostModal.show();
 });
 
@@ -55,40 +53,33 @@ document.getElementById("createPost").addEventListener("click", function () {
  * it hides the modal.
  */
 function createModalSubmission() {
-  document
-    .getElementById("createPostForm")
-    .addEventListener("submit", async function (e) {
-      e.preventDefault();
+  document.getElementById('createPostForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
 
-      const title = document.getElementById("postTitle").value;
-      const body = document.getElementById("postBody").value;
-      const media = document.getElementById("postMedia").value;
-      const accessToken = localStorage.getItem("accessToken");
+    const title = document.getElementById('postTitle').value;
+    const body = document.getElementById('postBody').value;
+    const media = document.getElementById('postMedia').value;
+    const accessToken = localStorage.getItem('accessToken');
 
-      try {
-        const response = await fetch(
-          "https://api.noroff.dev/api/v1/social/posts/",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${accessToken}`,
-            },
-            body: JSON.stringify({ title, body, media }),
-          }
+    try {
+      const response = await fetch('https://api.noroff.dev/api/v1/social/posts/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({ title, body, media }),
+      });
+
+      if (response.ok) {
+        let createPostModal = bootstrap.Modal.getInstance(
+          document.getElementById('createPostModal'),
         );
-
-        if (response.ok) {
-          let createPostModal = bootstrap.Modal.getInstance(
-            document.getElementById("createPostModal")
-          );
-          createPostModal.hide();
-          // Optionally, refresh the list of posts or add the new post to the DOM
-        } else {
-          // Handle errors
-        }
-      } catch (error) {
-        console.error("Error creating post:", error);
+        createPostModal.hide();
+        window.location.reload();
       }
-    });
+    } catch (error) {
+      console.error('Error creating post:', error);
+    }
+  });
 }
