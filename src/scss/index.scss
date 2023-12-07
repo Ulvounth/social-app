@@ -16,12 +16,13 @@ h1 {
 }
 
 .card-img {
+  max-height: 600px;
   object-fit: cover;
   border-radius: 20px;
 }
 
 .feeds {
-  max-width: 765px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
