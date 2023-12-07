@@ -5,7 +5,7 @@ export function createPostContent({ post, withHref }) {
   const { id, title, body, author, created, media } = post;
 
   const postContent = createElement('div', {
-    className: 'post-content p-5 rounded w-100',
+    className: 'post-content p-4 rounded w-100',
   });
 
   let wrapper = postContent;

@@ -16,12 +16,19 @@ h1 {
 }
 
 .card-img {
-  height: 480px;
   object-fit: cover;
-  border-radius: 25px;
+  border-radius: 20px;
 }
 
 .feeds {
   max-width: 765px;
   margin: 0 auto;
+}
+
+.dropdown-menu {
+  --bs-dropdown-min-width: 8rem;
+}
+
+.dropdown-menu[data-bs-popper] {
+  left: -40px;
 }
