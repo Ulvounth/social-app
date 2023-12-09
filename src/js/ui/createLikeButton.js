@@ -23,21 +23,23 @@ function updatePostUI(updatedPostData, id) {
 }
 
 export function createLikeButton(title, id, reaction) {
+  const likedPosts = JSON.parse(localStorage.getItem('likedPosts') || '[]');
+  const isAlreadyLiked = likedPosts.includes(id);
+
   const likeButton = createElement('button', {
-    className: 'btn btn-primary btn-sm me-2 like-button',
-    textContent: 'Like',
+    className: `btn btn-primary btn-sm me-2 like-button ${isAlreadyLiked ? 'liked' : ''}`,
+    textContent: isAlreadyLiked ? 'Liked' : 'Like',
     ariaLabel: `Like post titled ${title}`,
   });
 
   likeButton.addEventListener('click', async () => {
-    console.log(JSON.parse(likedPosts || '[]'));
     try {
-      localStorage.setItem(
-        'likedPosts',
-        JSON.stringify(likedPosts ? [...likedPosts, { id }] : [{ id }]),
-      );
       const updatedPostData = await reactToPost(id, reaction);
       updatePostUI(updatedPostData, id);
+
+      if (!isAlreadyLiked) {
+        localStorage.setItem('likedPosts', JSON.stringify([...likedPosts, id]));
+      }
     } catch (error) {
       console.error('error liking post', error);
     }
