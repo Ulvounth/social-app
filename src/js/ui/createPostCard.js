@@ -15,6 +15,7 @@ export function createPostCard({ post, withHref = true }) {
 
   const postCard = createElement('div', {
     className: 'col mb-5 rounded-4 shadow-lg position-relative',
+    id: `post-${post.id}`, // Set a unique ID for each post card
   });
 
   const postContent = createPostContent({ post, withHref });

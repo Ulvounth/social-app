@@ -18,8 +18,8 @@ async function handleSearchInput(e) {
   const posts = await fetchPosts(e.target.value);
   const filteredPosts = posts.filter((post) => {
     return (
-      post.body.toLowerCase().includes(e.target.value) ||
-      post.author.name.toLowerCase().includes(e.target.value)
+      post.body?.toLowerCase().includes(e.target.value) ||
+      post.author.name?.toLowerCase().includes(e.target.value)
     );
   });
   displayPosts(filteredPosts);

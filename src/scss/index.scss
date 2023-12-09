@@ -33,3 +33,9 @@ h1 {
 .dropdown-menu[data-bs-popper] {
   left: -40px;
 }
+
+.like-button.liked {
+  /* Styling for when the post is liked */
+  color: #ff7300; /* Example: change color */
+  font-weight: bold; /* Example: make text bold */
+}

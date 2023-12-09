@@ -9,8 +9,8 @@ export function createInteractionDiv(post) {
   });
 
   const likesSpan = createElement('span', {
-    className: 'flex-grow-1 text-start',
-    textContent: `${reactions.length} likes`,
+    className: 'flex-grow-1 text-start like-count',
+    textContent: `${reactions[0]?.count ?? 0} likes`,
   });
 
   const likeButton = createLikeButton(title, id, '👍');

@@ -91,7 +91,9 @@ export async function reactToPost(postId, symbol) {
   );
 
   if (response.ok) {
-    window.location.reload();
+    const updatedPostData = await response.json();
+
+    return updatedPostData; // Return the updated data
   } else {
     const errorData = await response.json();
     throw new Error(`Error liking post: ${errorData.message}`);
