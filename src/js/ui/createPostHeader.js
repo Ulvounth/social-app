@@ -1,5 +1,11 @@
 import { createElement } from '../utils.js';
 
+/**
+ * Creates a header element for a post, including the author's information and the creation date.
+ *
+ * @param {Object} post - The post data used to create the header.
+ * @returns {HTMLElement} The created post header element.
+ */
 export function createPostHeader(post) {
   const { author, created } = post;
 

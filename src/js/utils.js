@@ -1,9 +1,19 @@
+/**
+ * Displays the modal for editing a post.
+ *
+ * @param {Object} post - The post object to be edited.
+ */
 function editPost(post) {
   editModal(post);
   let modal = new bootstrap.Modal(document.getElementById(`editPostModal-${post.id}`));
   modal.show();
 }
 
+/**
+ * Creates and inserts the HTML for the edit post modal into the DOM.
+ *
+ * @param {Object} post - The post object to be edited, used to prefill modal form fields.
+ */
 function editModal(post) {
   // Generate a unique ID for the modal and form
   const modalId = `editPostModal-${post.id}`;
@@ -49,14 +59,12 @@ function editModal(post) {
 
 /**
  * Set up form submission logic for editing a post.
+ * Attaches an event listener to the form within the modal, handling the form submission,
+ * validation, and sending a PUT request with the updated post data.
  *
- * This function attaches an event listener to the form within the modal,
- * which handles the form submission, performs validation, and sends a PUT request
- * with the updated post data.
- *
- * @param {Object} post The original post object that is being edited.
- * @param {string} formId The ID of the form element within the modal.
- * @param {string} modalId The ID of the modal element.
+ * @param {Object} post - The original post object being edited.
+ * @param {string} formId - The ID of the form element within the modal.
+ * @param {string} modalId - The ID of the modal element.
  */
 function editModalSubmission(post, formId, modalId) {
   const form = document.getElementById(formId);
@@ -96,6 +104,13 @@ function editModalSubmission(post, formId, modalId) {
   };
 }
 
+/**
+ * Utility function to create an HTML element with specified attributes and properties.
+ *
+ * @param {string} tag - The HTML tag to create.
+ * @param {Object} props - An object containing key-value pairs of attributes and properties to set on the element.
+ * @returns {HTMLElement} The created HTML element.
+ */
 function createElement(tag, props) {
   const element = document.createElement(tag);
 

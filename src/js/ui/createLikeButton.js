@@ -1,13 +1,13 @@
 import { createElement } from '../utils.js';
 import { reactToPost } from '../services/api.js';
-const likedPosts = localStorage.getItem('likedPosts');
+
 /**
- * Updates the post UI after a like action.
+ * Updates the post's UI after a like action, specifically updating the like count and the button's appearance.
+ *
  * @param {Object} updatedPostData - The updated data of the post after liking.
- * @param {string} postId - The ID of the post being updated.
+ * @param {string} id - The ID of the post being updated.
  */
 function updatePostUI(updatedPostData, id) {
-  // Assuming each post has a unique ID and the like count is displayed in an element with a specific class
   const likeCountElement = document.querySelector(`#post-${id} .like-count`);
   const likeButtonElement = document.querySelector(`#post-${id} .like-button`);
 
@@ -16,12 +16,20 @@ function updatePostUI(updatedPostData, id) {
   }
 
   if (likeButtonElement) {
-    // Update the button appearance to show it's been liked, e.g., change color or icon
     likeButtonElement.textContent = 'Liked';
     likeButtonElement.disabled = true;
   }
 }
 
+/**
+ * Creates a like button for a post and sets up its click event listener.
+ * The button will change its appearance based on whether the post is liked.
+ *
+ * @param {string} title - The title of the post.
+ * @param {string} id - The ID of the post.
+ * @param {string} reaction - The reaction type for the like action.
+ * @returns {HTMLElement} The like button element.
+ */
 export function createLikeButton(title, id, reaction) {
   const likedPosts = JSON.parse(localStorage.getItem('likedPosts') || '[]');
   const isAlreadyLiked = likedPosts.includes(id);
@@ -41,7 +49,7 @@ export function createLikeButton(title, id, reaction) {
         localStorage.setItem('likedPosts', JSON.stringify([...likedPosts, id]));
       }
     } catch (error) {
-      console.error('error liking post', error);
+      console.error('Error liking post', error);
     }
   });
 

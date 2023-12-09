@@ -8,9 +8,16 @@ import {
 } from './index.js';
 import { decodedAccessToken } from '../auth/index.js';
 
+/**
+ * Creates a card element for a post with content, interaction elements, and optionally edit and delete buttons.
+ *
+ * @param {Object} options - The options for creating a post card.
+ * @param {Object} options.post - The post data to create the card for.
+ * @param {boolean} [options.withHref=true] - Whether the post content should be wrapped in a hyperlink.
+ * @returns {HTMLElement} The created post card element.
+ */
 export function createPostCard({ post, withHref = true }) {
   const { author } = post;
-
   const { name } = decodedAccessToken();
 
   const postCard = createElement('div', {
@@ -35,7 +42,6 @@ export function createPostCard({ post, withHref = true }) {
         await deletePost(post.id);
       } catch (error) {
         console.error('Error deleting post: ', error);
-
         alert('Error deleting post, please try again.');
       }
     });

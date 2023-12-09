@@ -1,6 +1,15 @@
 import { createElement } from '../utils.js';
 import { createPostHeader } from './index.js';
 
+/**
+ * Creates the content part of a post, including the header, title, media, and body.
+ * Optionally wraps the content in a hyperlink.
+ *
+ * @param {Object} options - The options for creating the post content.
+ * @param {Object} options.post - The post data to create the content for.
+ * @param {boolean} withHref - Determines if the content should be wrapped in a hyperlink.
+ * @returns {HTMLElement} The post content element, wrapped in a hyperlink if specified.
+ */
 export function createPostContent({ post, withHref }) {
   const { id, title, body, media } = post;
 
