@@ -1,0 +1,41 @@
+// Importing variables and Bootstrap styles
+@import "variables";
+
+@layer bootstrap {
+  @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+}
+
+@import "_main";
+
+body {
+  font-size: $font-size-base
+}
+
+h1 {
+  color: $primary-color;
+}
+
+.card-img {
+  max-height: 600px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.feeds {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.dropdown-menu {
+  --bs-dropdown-min-width: 8rem;
+}
+
+.dropdown-menu[data-bs-popper] {
+  left: -40px;
+}
+
+.like-button.liked {
+  /* Styling for when the post is liked */
+  color: #ff7300; /* Example: change color */
+  font-weight: bold; /* Example: make text bold */
+}
