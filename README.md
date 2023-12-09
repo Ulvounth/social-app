@@ -25,7 +25,7 @@ This project involves the development of a new JavaScript front-end client for a
 
 ## Link to the page
 
-[Social Media App]([https://shiny-crisp-dfc85a.netlify.app/](https://zesty-selkie-6b0948.netlify.app/))
+[Social Media App](https://zesty-selkie-6b0948.netlify.app/)
 
 
 ## Contact
