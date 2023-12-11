@@ -22,6 +22,10 @@ This project involves the development of a new JavaScript front-end client for a
 
 <img src="https://github.com/devicons/devicon/blob/master/icons/sass/sass-original.svg"  title="Sass" alt="Sass" width="40" height="40"/>  Sass
 
+## Planned With
+
+<img src="https://github.com/devicons/devicon/blob/master/icons/trello/trello-plain-wordmark.svg" title="Trello" alt="Trello" width="40" height="40"/>&nbsp;  Trello
+ [Link to my Trello](https://trello.com/invite/b/NDeagASA/db527be52aa39bd2639e40f49831241f/javascript-2)
 
 ## Link to the page
 
