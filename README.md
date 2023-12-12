@@ -22,6 +22,30 @@ This project involves the development of a new JavaScript front-end client for a
 
 <img src="https://github.com/devicons/devicon/blob/master/icons/sass/sass-original.svg"  title="Sass" alt="Sass" width="40" height="40"/>  Sass
 
+## Running instructions
+
+### Installing
+
+1. Clone the repo:
+
+```bash
+git clone https://github.com/Ulvounth/social-app.git
+```
+
+2. Install the dependencies:
+
+```
+npm install
+```
+
+### Running
+
+To run the app, run the following commands:
+
+```bash
+npm run dev
+```
+
 ## Planned With
 
 <img src="https://github.com/devicons/devicon/blob/master/icons/trello/trello-plain-wordmark.svg" title="Trello" alt="Trello" width="40" height="40"/>&nbsp;  Trello
