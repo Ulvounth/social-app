@@ -1,7 +1,7 @@
 <h1>Social Media Application</h1>
 <p>Javascript 2 project @ Noroff School of technology and digital media</p>
 
-![2023-12-09](https://github.com/Ulvounth/social-app/assets/98667510/646d91a6-15ea-4d4d-bfa3-1d46f6c1879a)
+![2023-12-12 (1)](https://github.com/Ulvounth/social-app/assets/98667510/0700ae9b-2f0f-42a1-a8a7-503c823b8464)
 
 
 .
