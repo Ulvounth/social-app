@@ -1,4 +1,5 @@
 import { loginUser } from '../auth/index.js';
+import { displayMessage } from '../ui/shared/displayMessage.js';
 
 /**
  * Form element for user login.
@@ -18,7 +19,7 @@ loginForm.addEventListener('submit', async function (event) {
   const password = document.getElementById('loginPassword').value;
 
   if (!email.endsWith('@stud.noroff.no') && !email.endsWith('@noroff.no')) {
-    alert('Please use a valid Noroff email address.');
+    displayMessage('#message', 'alert-danger', 'Please use a valid Noroff email address');
     return;
   }
 

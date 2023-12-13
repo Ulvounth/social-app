@@ -1,3 +1,4 @@
+import { displayMessage } from './ui/shared/displayMessage.js';
 /**
  * Displays the modal for editing a post.
  *
@@ -99,7 +100,7 @@ function editModalSubmission(post, formId, modalId) {
     } catch (error) {
       console.error('Error updating post:', error);
 
-      alert('Error updating post, please try again.');
+      displayMessage('#editPostLabel', 'alert-danger', 'Error updating post, please try again.');
     }
   };
 }

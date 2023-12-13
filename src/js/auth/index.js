@@ -1,3 +1,4 @@
+import { displayMessage } from '../ui/shared/displayMessage.js';
 /**
  * Attempts to log in a user by sending a POST request with the user's credentials.
  *
@@ -36,7 +37,9 @@ export async function loginUser(url, data) {
     return json;
   } catch (error) {
     console.error('Login Error:', error);
-    alert(`Login failed: ${error.message}`);
+
+    displayMessage('#message', 'alert-danger', error.message);
+
     return null; // Return null to indicate failure
   }
 }
@@ -81,7 +84,9 @@ export async function registerUser(url, data) {
     };
   } catch (error) {
     console.error('Registration Error:', error);
-    alert(`Registration failed: ${error.message}`);
+
+    displayMessage('#message-register', 'alert-danger', error.message);
+
     return null; // Return null or appropriate value to indicate failure
   }
 }
