@@ -1,4 +1,5 @@
 import { registerUser } from '../auth/index.js';
+import { displayMessage, clearMessage } from '../ui/shared/displayMessage.js';
 
 // Assuming that the form element exists with an ID 'registerForm' in your HTML.
 /**
@@ -19,16 +20,28 @@ registerForm.addEventListener('submit', async function (event) {
   const email = document.getElementById('registerEmail').value;
   const password = document.getElementById('registerPassword').value;
 
+  const usernameInput = document.getElementById('registerUsername');
+  const emailInput = document.getElementById('registerEmail');
+  const passwordInput = document.getElementById('registerPassword');
+
+  usernameInput.addEventListener('input', () => clearMessage('#message-includes'));
+  emailInput.addEventListener('input', () => clearMessage('#message-endswith'));
+  passwordInput.addEventListener('input', () => clearMessage('#message-length'));
+
   if (name.includes('.') || name.includes(' ')) {
-    alert('Username should not contain punctuation or spaces apart from underscores.');
+    displayMessage(
+      '#message-includes',
+      'alert-danger',
+      'Username should not contain punctuation or spaces apart from underscores.',
+    );
     return;
   }
   if (!email.endsWith('@stud.noroff.no') && !email.endsWith('@noroff.no')) {
-    alert('Please use a valid Noroff email address.');
+    displayMessage('#message-endswith', 'alert-danger', 'Please use a valid Noroff email address.');
     return;
   }
   if (password.length < 8) {
-    alert('Password must be at least 8 characters.');
+    displayMessage('#message-length', 'alert-danger', 'Password must be at least 8 characters.');
     return;
   }
 
