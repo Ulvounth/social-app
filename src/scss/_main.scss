@@ -1,0 +1,32 @@
+.background {
+    background: linear-gradient(90deg, rgba(223,223,223,1) 0%, rgba(239,218,241,1) 25%, rgba(81,211,237,1) 100%);
+}
+
+a {
+    text-decoration: none;
+}
+
+.icon-link {
+    font-size: 2rem;
+}
+  
+select {
+    cursor: pointer;
+}
+    
+.card {
+    cursor: pointer;
+    img {
+        margin: 0 auto;
+    }
+}
+  
+.btn-close {
+    filter: invert(1);
+}
+
+.error {
+    padding: 2rem;
+    border: 1px red solid;
+    color: red;
+}
